@@ -1,0 +1,13 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+    
+    .js-button{
+        display: inline-block;
+       width: 150px;
+       height: 40px;
+       border-radius: 10px;
+       border-color: blue;
+    }
