@@ -24,35 +24,34 @@ const options = {
       } else {
         startEl.disabled = false;
       }
-
-      startEl.addEventListener('click', onStart);
-    
-      function onStart() {
-        startEl.disabled = true;
-        inputEl.disabled = true;
-  
-        const IntId = setInterval(() => {
-        const currentDate = Date.now();
-        const difference = selectedDates[0] - currentDate;
-
-        if (difference < 1000) {
-            clearInterval(IntId);
-        }
-
-            const timer = convertMs(difference);
-
-            timerDays.textContent = timer.days.toString().padStart(2, 0);
-            timerHours.textContent = timer.hours.toString().padStart(2, 0);
-            timerMin.textContent = timer.minutes.toString().padStart(2, 0);
-            timerSec.textContent = timer.seconds.toString().padStart(2, 0);
-        }, 1000)
-    }
     },
 
   };
 
+  startEl.addEventListener('click', onStart);
+    
+  function onStart() {
+    startEl.disabled = true;
+    inputEl.disabled = true;
 
-const flatpickr = require("flatpickr");
+    const IntId = setInterval(() => {
+    const currentDate = Date.now();
+    const selectetDate = new Date(inputEl.value);
+    const difference = selectetDate - currentDate;
+
+    if (difference < 1000) {
+        clearInterval(IntId);
+    }
+
+        const timer = convertMs(difference);
+
+        timerDays.textContent = timer.days.toString().padStart(2, 0);
+        timerHours.textContent = timer.hours.toString().padStart(2, 0);
+        timerMin.textContent = timer.minutes.toString().padStart(2, 0);
+        timerSec.textContent = timer.seconds.toString().padStart(2, 0);
+    }, 1000)
+}
+
 flatpickr(inputEl, options);
 
 
